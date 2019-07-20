@@ -12,7 +12,25 @@ public class Main {
 
     public static void main(String[] args) {
 	    //probarFactoryMethod();
-        probarAbstractFactory();
+        //probarAbstractFactory();
+        probarBuilder();
+    }
+
+    private static void probarBuilder(){
+        com.company.creational.builder.Card card = new com.company.creational.builder.Card.CardBuilder("VISA",
+                "0000 1111 2222 3333")
+                .name("Alberto")
+                .expires(2030)
+                .credit(true)
+                .build();
+
+        System.out.println(card);
+
+        com.company.creational.builder.Card card2 = new com.company.creational.builder.Card.CardBuilder("AMEX",
+                "9999 9999 9999 9999")
+                .build();
+
+        System.out.println(card2);
     }
 
     private static void probarAbstractFactory(){
