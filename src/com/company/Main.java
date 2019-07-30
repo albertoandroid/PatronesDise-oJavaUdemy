@@ -19,7 +19,13 @@ public class Main {
 	    //probarFactoryMethod();
         //probarAbstractFactory();
         //probarBuilder();
-        probarPrototype();
+        //probarPrototype();
+        probarSinglenton();
+    }
+
+    private static void probarSinglenton(){
+        com.company.creational.singlenton.Card.getINSTANCE().setCardNumber("1234-1234-1234-1324");
+        System.out.println(com.company.creational.singlenton.Card.getINSTANCE().getCardNumber());
     }
 
     private static void probarPrototype(){
