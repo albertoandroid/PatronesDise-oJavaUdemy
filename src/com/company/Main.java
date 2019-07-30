@@ -1,10 +1,11 @@
 package com.company;
 
 import com.company.behavioral.chainofresponsibility.Tarjeta;
-import com.company.creational.abstractfactory.AbstractFactory;
-import com.company.creational.abstractfactory.Card;
-import com.company.creational.abstractfactory.FactoryProvider;
-import com.company.creational.abstractfactory.PaymentMethod;
+import com.company.behavioral.command.CreditCard;
+import com.company.behavioral.command.CreditCardActivateCommand;
+import com.company.behavioral.command.CreditCardDesactivateCommand;
+import com.company.behavioral.command.CreditCardInvoker;
+import com.company.creational.abstractfactory.*;
 import com.company.creational.factorymethod.Payment;
 import com.company.creational.factorymethod.PaymentFactory;
 import com.company.creational.factorymethod.TypePayment;
@@ -26,7 +27,21 @@ public class Main {
         //probarSinglenton();
 
         //COMPORTAMIENTO
-        probarChainOfResponsability();
+        //probarChainOfResponsability();
+        probarCommand();
+    }
+
+    private static void probarCommand(){
+        CreditCard creditCard = new CreditCard();
+        CreditCard creditCardDeactivate= new CreditCard();
+
+        CreditCardInvoker invoker = new CreditCardInvoker();
+
+        invoker.setCommand(new CreditCardActivateCommand(creditCard));
+        invoker.run();
+        System.out.println("--------------------");
+        invoker.setCommand(new CreditCardDesactivateCommand(creditCardDeactivate));
+        invoker.run();
     }
 
     private static void probarChainOfResponsability(){
