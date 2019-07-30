@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.behavioral.chainofresponsibility.Tarjeta;
 import com.company.creational.abstractfactory.AbstractFactory;
 import com.company.creational.abstractfactory.Card;
 import com.company.creational.abstractfactory.FactoryProvider;
@@ -16,11 +17,21 @@ import static com.company.creational.prototype.PrototypeFactory.CartType.VISA;
 public class Main {
 
     public static void main(String[] args) {
+
+        //CREACIONALES
 	    //probarFactoryMethod();
         //probarAbstractFactory();
         //probarBuilder();
         //probarPrototype();
-        probarSinglenton();
+        //probarSinglenton();
+
+        //COMPORTAMIENTO
+        probarChainOfResponsability();
+    }
+
+    private static void probarChainOfResponsability(){
+        Tarjeta tarjeta = new Tarjeta();
+        tarjeta.crediCardRequest(100000);
     }
 
     private static void probarSinglenton(){
