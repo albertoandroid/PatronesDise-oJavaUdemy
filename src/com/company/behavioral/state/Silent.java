@@ -1,4 +1,4 @@
-package com.company.behavioral.status;
+package com.company.behavioral.state;
 
 /**
  * Created by albertopalomarrobledo on 31/7/19.
