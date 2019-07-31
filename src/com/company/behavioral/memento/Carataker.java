@@ -14,7 +14,7 @@ public class Carataker {
         estados.add(memento);
     }
 
-    public void getMemento(int index){
+    public ArticleMemento getMemento(int index){
         return estados.get(index);
     }
 }

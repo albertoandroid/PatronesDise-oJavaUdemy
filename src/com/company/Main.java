@@ -9,6 +9,9 @@ import com.company.behavioral.iterator.*;
 import com.company.behavioral.mediator.ConcreteColleage1;
 import com.company.behavioral.mediator.ConcreteColleage2;
 import com.company.behavioral.mediator.ConcreteMediator;
+import com.company.behavioral.memento.Article;
+import com.company.behavioral.memento.ArticleMemento;
+import com.company.behavioral.memento.Carataker;
 import com.company.creational.abstractfactory.*;
 import com.company.creational.abstractfactory.Card;
 import com.company.creational.factorymethod.Payment;
@@ -35,7 +38,39 @@ public class Main {
         //probarChainOfResponsability();
         //probarCommand();
         //probarIterator();
-        probarMediator();
+        //probarMediator();
+        probarMemento();
+    }
+
+    private static void probarMemento(){
+        Carataker carataker = new Carataker();
+        Article article = new Article("Alberto", "Memento es una pelicula");
+        article.setText(article.getText() + " de Nolan");
+        System.out.println(article.getText());
+
+        carataker.addMemento(article.createMemento());
+        article.setText(article.getText() + " protagonizada por Guy Pearce");
+        System.out.println(article.getText());
+
+        carataker.addMemento(article.createMemento());
+
+        article.setText(article.getText() + " y Leonardo DiCaprio");
+        System.out.println(article.getText());
+
+        ArticleMemento memento1 = carataker.getMemento(0);
+        ArticleMemento memento2 = carataker.getMemento(1);
+
+        article.restoreMemento(memento1);
+        System.out.println(article.getText());
+
+
+        article.restoreMemento(memento2);
+        System.out.println(article.getText());
+
+        article.setText(article.getText() + " del año ");
+
+
+
     }
 
     private static void probarMediator(){
