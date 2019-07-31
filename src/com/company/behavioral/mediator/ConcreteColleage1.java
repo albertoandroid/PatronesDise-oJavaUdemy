@@ -16,6 +16,6 @@ public class ConcreteColleage1 extends Colleage {
 
     @Override
     public void messageReceived(String message) {
-        System.out.println("Collega1 ha recibido el siguiente mensaje: " + message);
+        System.out.println("User1 ha recibido el siguiente mensaje: " + message);
     }
 }

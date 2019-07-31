@@ -6,6 +6,9 @@ import com.company.behavioral.command.CreditCardActivateCommand;
 import com.company.behavioral.command.CreditCardDesactivateCommand;
 import com.company.behavioral.command.CreditCardInvoker;
 import com.company.behavioral.iterator.*;
+import com.company.behavioral.mediator.ConcreteColleage1;
+import com.company.behavioral.mediator.ConcreteColleage2;
+import com.company.behavioral.mediator.ConcreteMediator;
 import com.company.creational.abstractfactory.*;
 import com.company.creational.abstractfactory.Card;
 import com.company.creational.factorymethod.Payment;
@@ -31,7 +34,20 @@ public class Main {
         //COMPORTAMIENTO
         //probarChainOfResponsability();
         //probarCommand();
-        probarIterator();
+        //probarIterator();
+        probarMediator();
+    }
+
+    private static void probarMediator(){
+        ConcreteMediator mediator = new ConcreteMediator();
+        ConcreteColleage1 user1 = new ConcreteColleage1(mediator);
+        ConcreteColleage2 user2 = new ConcreteColleage2(mediator);
+
+        mediator.setUser1(user1);
+        mediator.setUser2(user2);
+
+        user1.send("Hola soy user1");
+        user2.send("Hola user1, soy user2");
     }
 
     private static void probarIterator(){
