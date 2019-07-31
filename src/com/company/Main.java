@@ -69,8 +69,6 @@ public class Main {
 
         article.setText(article.getText() + " del año ");
 
-
-
     }
 
     private static void probarMediator(){
