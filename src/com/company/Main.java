@@ -16,6 +16,9 @@ import com.company.behavioral.observer.Coche;
 import com.company.behavioral.observer.MessagePublisher;
 import com.company.behavioral.observer.Peaton;
 import com.company.behavioral.observer.Semaforo;
+import com.company.behavioral.status.MobileAlertStateContext;
+import com.company.behavioral.status.Silent;
+import com.company.behavioral.status.Vibration;
 import com.company.creational.abstractfactory.*;
 import com.company.creational.abstractfactory.Card;
 import com.company.creational.factorymethod.Payment;
@@ -45,7 +48,20 @@ public class Main {
         //probarIterator();
         //probarMediator();
         //probarMemento();
-        probarObserver();
+        //probarObserver();
+        probarState();
+    }
+
+    private static void probarState(){
+        MobileAlertStateContext context = new MobileAlertStateContext();
+        context.alert();
+        context.alert();
+        context.setState(new Vibration());
+        context.alert();
+        context.alert();
+        context.setState(new Silent());
+        context.alert();
+        context.alert();
     }
 
     private static void probarObserver(){
