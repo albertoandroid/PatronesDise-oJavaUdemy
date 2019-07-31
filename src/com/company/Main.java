@@ -12,6 +12,10 @@ import com.company.behavioral.mediator.ConcreteMediator;
 import com.company.behavioral.memento.Article;
 import com.company.behavioral.memento.ArticleMemento;
 import com.company.behavioral.memento.Carataker;
+import com.company.behavioral.observer.Coche;
+import com.company.behavioral.observer.MessagePublisher;
+import com.company.behavioral.observer.Peaton;
+import com.company.behavioral.observer.Semaforo;
 import com.company.creational.abstractfactory.*;
 import com.company.creational.abstractfactory.Card;
 import com.company.creational.factorymethod.Payment;
@@ -19,6 +23,7 @@ import com.company.creational.factorymethod.PaymentFactory;
 import com.company.creational.factorymethod.TypePayment;
 import com.company.creational.prototype.PrototypeCard;
 import com.company.creational.prototype.PrototypeFactory;
+import sun.plugin2.message.Message;
 
 import static com.company.creational.prototype.PrototypeFactory.CartType.AMEX;
 import static com.company.creational.prototype.PrototypeFactory.CartType.VISA;
@@ -39,7 +44,24 @@ public class Main {
         //probarCommand();
         //probarIterator();
         //probarMediator();
-        probarMemento();
+        //probarMemento();
+        probarObserver();
+    }
+
+    private static void probarObserver(){
+        Coche coche = new Coche();
+        Peaton peaton = new Peaton();
+        MessagePublisher messagePublisher = new MessagePublisher();
+
+        messagePublisher.attach(coche);
+        messagePublisher.attach(peaton);
+        messagePublisher.notifyUpdate(new Semaforo("ROJO_COCHE"));
+        try{
+            Thread.sleep(2000);
+        }catch (Exception e){
+
+        }
+        messagePublisher.notifyUpdate(new Semaforo("VERDE_COCHE"));
     }
 
     private static void probarMemento(){
