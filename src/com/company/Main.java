@@ -26,6 +26,8 @@ import com.company.behavioral.state.Vibration;
 import com.company.behavioral.strategy.CapitalStrategyTextFormatter;
 import com.company.behavioral.strategy.Context;
 import com.company.behavioral.strategy.LowerStrategyTestFormatter;
+import com.company.behavioral.templatemethod.*;
+import com.company.behavioral.templatemethod.Visa;
 import com.company.creational.abstractfactory.*;
 import com.company.creational.abstractfactory.Card;
 import com.company.creational.factorymethod.Payment;
@@ -57,7 +59,16 @@ public class Main {
         //probarObserver();
         //probarState();
         //probarInterpreter();
-        probarStrategy();
+        //probarStrategy();
+        probarTemplateMethod();
+    }
+
+    private static void probarTemplateMethod(){
+        com.company.behavioral.templatemethod.Payment payment = new Visa();
+        payment.makePayment();
+
+        payment = new Paypal();
+        payment.makePayment();
     }
 
     private static void probarStrategy(){
