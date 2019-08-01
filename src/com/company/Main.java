@@ -23,6 +23,9 @@ import com.company.behavioral.observer.Semaforo;
 import com.company.behavioral.state.MobileAlertStateContext;
 import com.company.behavioral.state.Silent;
 import com.company.behavioral.state.Vibration;
+import com.company.behavioral.strategy.CapitalStrategyTextFormatter;
+import com.company.behavioral.strategy.Context;
+import com.company.behavioral.strategy.LowerStrategyTestFormatter;
 import com.company.creational.abstractfactory.*;
 import com.company.creational.abstractfactory.Card;
 import com.company.creational.factorymethod.Payment;
@@ -53,7 +56,16 @@ public class Main {
         //probarMemento();
         //probarObserver();
         //probarState();
-        probarInterpreter();
+        //probarInterpreter();
+        probarStrategy();
+    }
+
+    private static void probarStrategy(){
+        Context context = new Context(new CapitalStrategyTextFormatter());
+        context.publishText("Este texto será convertido a MAYUSCULAS a través del algoritmo");
+
+        context = new Context(new LowerStrategyTestFormatter());
+        context.publishText("Esto texto SERA CONVERTIDO a MINUSCULAS a través del algortimo");
     }
 
     private static void probarInterpreter(){
