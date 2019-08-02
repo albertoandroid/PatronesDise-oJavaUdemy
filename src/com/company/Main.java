@@ -28,6 +28,7 @@ import com.company.behavioral.strategy.Context;
 import com.company.behavioral.strategy.LowerStrategyTestFormatter;
 import com.company.behavioral.templatemethod.*;
 import com.company.behavioral.templatemethod.Visa;
+import com.company.behavioral.visitor.*;
 import com.company.creational.abstractfactory.*;
 import com.company.creational.abstractfactory.Card;
 import com.company.creational.factorymethod.Payment;
@@ -60,7 +61,17 @@ public class Main {
         //probarState();
         //probarInterpreter();
         //probarStrategy();
-        probarTemplateMethod();
+        //probarTemplateMethod();
+        probarVisitor();
+
+    }
+
+    private static void probarVisitor(){
+        OfertaElement ofertaElement = new OfertaGasolina();
+        ofertaElement.accept(new BlackCreditCardVisitor());
+
+        ofertaElement = new OfertaVuelos();
+        ofertaElement.accept(new ClassicCreditCardVisitor());
     }
 
     private static void probarTemplateMethod(){
