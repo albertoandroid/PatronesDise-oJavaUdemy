@@ -36,6 +36,9 @@ import com.company.creational.factorymethod.PaymentFactory;
 import com.company.creational.factorymethod.TypePayment;
 import com.company.creational.prototype.PrototypeCard;
 import com.company.creational.prototype.PrototypeFactory;
+import com.company.structural.bridge.ClassicCreditCard;
+import com.company.structural.bridge.SecureCreditCard;
+import com.company.structural.bridge.UnsecureCreditCard;
 
 import static com.company.creational.prototype.PrototypeFactory.CartType.AMEX;
 import static com.company.creational.prototype.PrototypeFactory.CartType.VISA;
@@ -62,8 +65,28 @@ public class Main {
         //probarInterpreter();
         //probarStrategy();
         //probarTemplateMethod();
-        probarVisitor();
+        //probarVisitor();
 
+        //STRUCTURAL
+        //probarAdapter();
+        probarBridge();
+
+    }
+
+    private static void probarBridge(){
+        com.company.structural.bridge.CreditCard classic = new ClassicCreditCard(new UnsecureCreditCard());
+        classic.realizarPago();
+
+        classic = new ClassicCreditCard(new SecureCreditCard());
+        classic.realizarPago();
+    }
+
+    private static void probarAdapter(){
+        com.company.structural.adapter.CreditCard creditCard = new com.company.structural.adapter.CreditCard();
+        creditCard.pay("classic");
+        creditCard.pay("gold");
+        creditCard.pay("black");
+        creditCard.pay("silver");
     }
 
     private static void probarVisitor(){
