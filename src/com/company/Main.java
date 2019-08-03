@@ -43,6 +43,8 @@ import com.company.structural.composite.CuentaAhorro;
 import com.company.structural.composite.CuentaComponent;
 import com.company.structural.composite.CuentaComposite;
 import com.company.structural.composite.CuentaCorriente;
+import com.company.structural.decorator.*;
+import com.company.structural.decorator.Credit;
 
 import static com.company.creational.prototype.PrototypeFactory.CartType.AMEX;
 import static com.company.creational.prototype.PrototypeFactory.CartType.VISA;
@@ -74,7 +76,29 @@ public class Main {
         //STRUCTURAL
         //probarAdapter();
         //probarBridge();
-        probarComposite();
+        //probarComposite();
+        probarDecorator();
+
+    }
+
+    private static void probarDecorator(){
+        com.company.structural.decorator.Credit gold = new Gold();
+
+        Credit blackInternationalPayment = new Black();
+        blackInternationalPayment = new InternationalPaymentDecorator(blackInternationalPayment);
+
+        Credit goldSecureInternational = new Gold();
+        goldSecureInternational = new InternationalPaymentDecorator(goldSecureInternational);
+        goldSecureInternational = new SecureDecorator(goldSecureInternational);
+
+        System.out.println("----Tarjeta Gold con configuración----");
+        gold.showCredit();
+
+        System.out.println("----Tarjeta Black con configuración----");
+        blackInternationalPayment.showCredit();
+
+        System.out.println("----Tarjeta Gold2 con configuración----");
+        goldSecureInternational.showCredit();
 
     }
 
