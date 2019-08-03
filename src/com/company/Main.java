@@ -39,6 +39,10 @@ import com.company.creational.prototype.PrototypeFactory;
 import com.company.structural.bridge.ClassicCreditCard;
 import com.company.structural.bridge.SecureCreditCard;
 import com.company.structural.bridge.UnsecureCreditCard;
+import com.company.structural.composite.CuentaAhorro;
+import com.company.structural.composite.CuentaComponent;
+import com.company.structural.composite.CuentaComposite;
+import com.company.structural.composite.CuentaCorriente;
 
 import static com.company.creational.prototype.PrototypeFactory.CartType.AMEX;
 import static com.company.creational.prototype.PrototypeFactory.CartType.VISA;
@@ -69,8 +73,21 @@ public class Main {
 
         //STRUCTURAL
         //probarAdapter();
-        probarBridge();
+        //probarBridge();
+        probarComposite();
 
+    }
+
+    private static void probarComposite(){
+        CuentaComponent cuentaCorriente = new CuentaCorriente(1000.0, "Alberto");
+        CuentaComponent cuentaAhorro = new CuentaAhorro(20000.0, "Alberto");
+
+        CuentaComposite cuentaComposite = new CuentaComposite();
+        cuentaComposite.addCuenta(cuentaCorriente);
+        cuentaComposite.addCuenta(cuentaAhorro);
+
+        cuentaComposite.showAccountName();
+        cuentaComposite.getAmount();
     }
 
     private static void probarBridge(){
