@@ -45,6 +45,7 @@ import com.company.structural.composite.CuentaComposite;
 import com.company.structural.composite.CuentaCorriente;
 import com.company.structural.decorator.*;
 import com.company.structural.decorator.Credit;
+import com.company.structural.facade.CreditMarket;
 
 import static com.company.creational.prototype.PrototypeFactory.CartType.AMEX;
 import static com.company.creational.prototype.PrototypeFactory.CartType.VISA;
@@ -77,8 +78,16 @@ public class Main {
         //probarAdapter();
         //probarBridge();
         //probarComposite();
-        probarDecorator();
+        //probarDecorator();
+        probarFacade();
 
+    }
+
+    private static void probarFacade(){
+        CreditMarket creditMarket = new CreditMarket();
+        creditMarket.showCreditBlack();
+        creditMarket.showCreditGold();
+        creditMarket.showCreditSilver();
     }
 
     private static void probarDecorator(){
