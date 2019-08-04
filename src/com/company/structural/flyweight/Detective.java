@@ -15,10 +15,11 @@ public class Detective implements Enemy {
     @Override
     public void setWeapon(String weapon) {
         this.weapon = weapon;
+        System.out.println("El arma del detective es: " + weapon);
     }
 
     @Override
     public void lifePoints() {
-        System.out.println("La vida de un teniente es: " + LIFE);
+        System.out.println("La vida de un detective es: " + LIFE);
     }
 }

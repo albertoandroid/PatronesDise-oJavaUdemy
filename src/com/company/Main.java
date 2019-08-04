@@ -46,6 +46,10 @@ import com.company.structural.composite.CuentaCorriente;
 import com.company.structural.decorator.*;
 import com.company.structural.decorator.Credit;
 import com.company.structural.facade.CreditMarket;
+import com.company.structural.flyweight.Enemy;
+import com.company.structural.flyweight.EnemyFactory;
+
+import java.util.Random;
 
 import static com.company.creational.prototype.PrototypeFactory.CartType.AMEX;
 import static com.company.creational.prototype.PrototypeFactory.CartType.VISA;
@@ -79,9 +83,33 @@ public class Main {
         //probarBridge();
         //probarComposite();
         //probarDecorator();
-        probarFacade();
+        //probarFacade();
+        probarFlyweight();
 
     }
+
+    private static void probarFlyweight(){
+        for(int i=0; i<15; i++){
+            Enemy enemy = EnemyFactory.getEnemy(getRandomEnemyType());
+            enemy.setWeapon(getRandomWeapon());
+            enemy.lifePoints();
+        }
+    }
+
+    private static String getRandomWeapon(){
+        Random r = new Random();
+        int randInt = r.nextInt(weapon.length);
+        return weapon[randInt];
+    }
+
+    private static String getRandomEnemyType(){
+        Random r = new Random();
+        int randInt = r.nextInt(enemyType.length);
+        return enemyType[randInt];
+    }
+
+    private static String[] enemyType = {"Private", "Detective"};
+    private static String[] weapon = {"Fusil", "Revolver", "Pistola", "Metralleta", "Lanza Granadas", "9mm"};
 
     private static void probarFacade(){
         CreditMarket creditMarket = new CreditMarket();
