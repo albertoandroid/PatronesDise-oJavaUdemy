@@ -23,5 +23,6 @@ public class ProxyInternet implements Internet {
         if(bannedUrl.contains(url)){
             throw new Exception("URL bloqueada - Acceso Denegado - Consulta con tu administrador");
         }
+        internet.connectTo(url);
     }
 }

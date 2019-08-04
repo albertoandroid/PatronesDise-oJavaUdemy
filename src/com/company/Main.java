@@ -48,6 +48,8 @@ import com.company.structural.decorator.Credit;
 import com.company.structural.facade.CreditMarket;
 import com.company.structural.flyweight.Enemy;
 import com.company.structural.flyweight.EnemyFactory;
+import com.company.structural.proxy.Internet;
+import com.company.structural.proxy.ProxyInternet;
 
 import java.util.Random;
 
@@ -84,8 +86,19 @@ public class Main {
         //probarComposite();
         //probarDecorator();
         //probarFacade();
-        probarFlyweight();
+        //probarFlyweight();
+        probarProxy();
 
+    }
+
+    private static void probarProxy(){
+        Internet internet = new ProxyInternet();
+        try {
+            internet.connectTo("udemy.com");
+            internet.connectTo("facebook.com");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void probarFlyweight(){
